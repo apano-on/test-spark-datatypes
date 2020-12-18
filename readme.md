@@ -1,4 +1,4 @@
-### SparkSQL --> XML Schema datatypes conversion in ONTOP
+### SparkSQL --> XML Schema datatypes conversion in OntopSpark
 
 </br>
 
@@ -8,7 +8,7 @@ W3C reccomended mappings : <https://www.w3.org/2001/sw/rdb2rdf/wiki/Mapping_SQL_
 
 </br>
 
-| Spark datatype | SparkSQL name | W3C reccomandation | ONTOP default | ONTOP change |
+| Spark datatype | SparkSQL name | W3C reccomandation | ONTOP default | OntopSpark |
 |----------------|---------------|--------------------|---------------|---------------|
 | BooleanType | BOOLEAN | xsd:boolean | xsd:boolean | |
 | ByteType | BYTE, TINYINT | xsd:integer or subtype | xsd:integer | xsd:byte |
@@ -25,21 +25,29 @@ W3C reccomended mappings : <https://www.w3.org/2001/sw/rdb2rdf/wiki/Mapping_SQL_
 
 </br>
 
-## HOW TO RUN
+## Running the test
 
-1. Run the commands
+1. Build and run Apache Spark
 
   ```console
   foo@bar:~$ sudo ./docker-build.sh
-  foo@bar:~$ sudo docker-compose up
+  foo@bar:~$ sudo docker-compose -f docker-compose-spark.yml up
   ```
 
-2. Connect to: _localhost:8080_
+2. Wait Apache Spark complete startup, then run OntopSpark in another console window
 
-3. Execute the query
+  ```console
+  foo@bar:~$ sudo docker-compose -f docker-compose-ontop.yml up
+  ```
 
-        PREFIX : <http://www.semanticweb.org/spark-datatypes-test#>
+2. Connect to [_localhost:8080_](http://localhost:8080/)
 
-        SELECT * WHERE {
-          ?sub ?pred ?obj .
-        }
+3. Execute the query, and check the datatypes
+
+  ```
+  PREFIX : <http://www.semanticweb.org/spark-datatypes-test#>
+
+  SELECT * WHERE {
+    ?sub ?pred ?obj .
+  }
+  ```

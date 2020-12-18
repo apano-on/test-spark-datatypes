@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+    ontop:
+        hostname: ontop
+        container_name: ontop
+        image: chimerasuite/ontop:fd38fec7a0
+        environment: 
+            - "ONTOP_ONTOLOGY_FILE=/opt/ontop/input/datatypes.owl"
+            - "ONTOP_MAPPING_FILE=/opt/ontop/input/datatypes.obda"
+            - "ONTOP_PROPERTIES_FILE=/opt/ontop/input/datatypes.properties"
+        ports:
+           - "8080:8080"
+        volumes:
+           - "./ontop-endpoint/input:/opt/ontop/input"
+           - "./ontop-endpoint/jdbc:/opt/ontop/jdbc"
+        restart: unless-stopped
+ 
+networks:
+ default:
+   external:
+     name: test-datatypes
