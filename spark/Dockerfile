@@ -5,9 +5,9 @@ RUN apt install wget default-jdk scala git python3 -y
 
 WORKDIR /tmp
 
-RUN wget http://downloads.apache.org/spark/spark-3.0.2/spark-3.0.2-bin-hadoop2.7.tgz
+RUN wget http://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
 RUN tar xvf spark-*
-RUN mv spark-3.0.2-bin-hadoop2.7 /opt/spark
+RUN mv spark-3.1.2-bin-hadoop2.7 /opt/spark
 
 RUN apt install procps -y
 
