@@ -1,0 +1,30 @@
+{
+  "relations": [
+    {
+      "name": ["\"views\"", "\"datatypes\""],
+      "baseRelation": ["\"testDB\"", "\"test2\""],
+      "filterExpression": "",
+      "columns": {
+        "added": []
+      },
+      "uniqueConstraints": {
+        "added": [
+          {
+            "name": "\"datatypes_pk\"",
+            "determinants": [
+              "\"id\""
+            ],
+            "isPrimaryKey": true
+          }
+        ]
+      },
+      "otherFunctionalDependencies": {
+        "added": []
+      },
+      "foreignKeys": {
+        "added": []
+      },
+      "type": "BasicViewDefinition"
+    }
+  ]
+}

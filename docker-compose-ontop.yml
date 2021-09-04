@@ -8,6 +8,7 @@ services:
             - "ONTOP_ONTOLOGY_FILE=/opt/ontop/input/datatypes.owl"
             - "ONTOP_MAPPING_FILE=/opt/ontop/input/datatypes.obda"
             - "ONTOP_PROPERTIES_FILE=/opt/ontop/input/datatypes.properties"
+            - "ONTOP_VIEWS_FILE=/opt/ontop/input/datatypes_views.json"
         ports:
            - "8080:8080"
         volumes:
