@@ -22,8 +22,7 @@ CREATE TABLE testDB.test (
           testBinary BINARY NOT NULL,
           testDecimal DECIMAL(5,2) NOT NULL,
           testDec DEC(5,2) NOT NULL,
-          testNumeric NUMERIC(5,2) NOT NULL,
-          PRIMARY KEY (id));
+          testNumeric NUMERIC(5,2) NOT NULL);
           
 INSERT INTO testDB.test
 VALUES (1,FALSE,-128,127,-32768,32767,-2147483648,2147483647,-9223372036854775808,9223372036854775807,
