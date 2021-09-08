@@ -32,7 +32,7 @@ services:
         restart: unless-stopped
         depends_on:
             spark:
-                condtion: service_healthy
+                condition: service_healthy
 
 networks:
     default:

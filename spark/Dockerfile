@@ -2,6 +2,7 @@ FROM debian
 
 RUN apt update
 RUN apt install wget default-jdk scala git python3 -y
+RUN apt-get install -y curl
 
 WORKDIR /tmp
 
