@@ -5,7 +5,7 @@ start-master.sh \
 	--port 7077 \
 	--webui-port 8050
 
-start-slave.sh \
+start-worker.sh \
 	spark://localhost:7077 \
 	--host localhost \
 	--port 7077 \

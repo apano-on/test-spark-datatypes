@@ -10,6 +10,10 @@ services:
             - "8051:8051"  # Spark worker
             - "7078:7078"
             - "10000:10000"  # ThriftServer JDBC endpoint
+        healthcheck:
+            test: [ "CMD", "curl", "--http0.9", "-f", "http://localhost:10000" ]
+            interval: 20s
+            retries: 5
 
     ontop:
         hostname: ontop
@@ -27,6 +31,9 @@ services:
             - "./ontop-endpoint/jdbc:/opt/ontop/jdbc"
         restart: unless-stopped
         depends_on:
-            -   spark
-        networks:
-            - test-datatypes
+            spark:
+                condtion: service_healthy
+
+networks:
+    default:
+        name: test-datatypes
