@@ -14,6 +14,6 @@ terms:		http://purl.org/dc/terms/
 [MappingDeclaration] @collection [[
 mappingId	test
 target		:{id} a :TestObject ; :hasBoolean {testBoolean} ; :hasByte {testByte} ; :hasTinyInt {testTinyInt} ; :hasShort {testShort} ; :hasSmallInt {testSmallInt} ; :hasInt {testInt} ; :hasInteger {testInteger} ; :hasLong {testLong} ; :hasBigInt {testBigInt} ; :hasFloat {testFloat} ; :hasReal {testReal} ; :hasDouble {testDouble} ; :hasDate {testDate} ; :hasTimestamp {testTimestamp} ; :hasString {testString} ; :hasBinary {testBinary} ; :hasDecimal {testDecimal} ; :hasDec {testDec} ; :hasNumeric {testNumeric} .
-source		SELECT * FROM testDB.test;
+source		SELECT * FROM views.datatypes;
 ]]
 
