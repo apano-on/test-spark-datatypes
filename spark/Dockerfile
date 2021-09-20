@@ -23,6 +23,16 @@ COPY testDB.sql testDB.sql
 
 RUN chmod +x start.sh
 
+#NOTE: In the future the jars can be retrieved from maven
+#RUN cd ${SPARK_HOME}/jars && \
+#wget "https://search.maven.org/remotecontent?filepath=org/apache/sedona/sedona-python-adapter-3.0_2.12/1.0.1-incubating/sedona-python-adapter-3.0_2.12-1.0.1-incubating.jar" && \
+#wget "https://search.maven.org/remotecontent?filepath=org/apache/sedona/sedona-viz-3.0_2.12/1.0.1-incubating/sedona-viz-3.0_2.12-1.0.1-incubating.jar" && \
+#wget "https://search.maven.org/remotecontent?filepath=org/datasyslab/geotools-wrapper/geotools-24.0/geotools-wrapper-geotools-24.0.jar"
+COPY sedona-python-adapter-3.0_2.12-1.0.1-incubating.jar /opt/spark/jars/sedona-python-adapter-3.0_2.12-1.0.1-incubating.jar
+COPY sedona-viz-3.0_2.12-1.0.1-incubating.jar /opt/spark/jars/sedona-viz-3.0_2.12-1.0.1-incubating.jar
+COPY geotools-wrapper-geotools-24.0.jar /opt/spark/jars/geotools-wrapper-geotools-24.0.jar
+COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+
 EXPOSE 8050
 EXPOSE 8051
 EXPOSE 10000
