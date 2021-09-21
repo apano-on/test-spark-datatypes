@@ -18,7 +18,7 @@ services:
     ontop:
         hostname: ontop
         container_name: ontop
-        image: chimerasuite/ontop:1cbcf170c6
+        image: ontop/ontop-endpoint:4.2-SNAPSHOT
         environment:
             - "ONTOP_ONTOLOGY_FILE=/opt/ontop/input/datatypes.owl"
             - "ONTOP_MAPPING_FILE=/opt/ontop/input/datatypes.obda"
