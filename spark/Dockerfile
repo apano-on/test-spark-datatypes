@@ -6,9 +6,9 @@ RUN apt-get install -y curl
 
 WORKDIR /tmp
 
-RUN wget http://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop2.7.tgz
+RUN wget http://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz
 RUN tar xvf spark-*
-RUN mv spark-3.1.2-bin-hadoop2.7 /opt/spark
+RUN mv spark-3.1.2-bin-hadoop3.2 /opt/spark
 
 RUN apt install procps -y
 
@@ -23,7 +23,7 @@ COPY testDB.sql testDB.sql
 
 RUN chmod +x start.sh
 
-#NOTE: In the future the jars can be retrieved from maven
+#NOTE: In the future the jars can be retrieved from maven / they can either be downloaded manually or pulled from maven at build time
 #RUN cd ${SPARK_HOME}/jars && \
 #wget "https://search.maven.org/remotecontent?filepath=org/apache/sedona/sedona-python-adapter-3.0_2.12/1.0.1-incubating/sedona-python-adapter-3.0_2.12-1.0.1-incubating.jar" && \
 #wget "https://search.maven.org/remotecontent?filepath=org/apache/sedona/sedona-viz-3.0_2.12/1.0.1-incubating/sedona-viz-3.0_2.12-1.0.1-incubating.jar" && \
