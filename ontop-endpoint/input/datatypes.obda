@@ -19,6 +19,6 @@ source		SELECT * FROM views.datatypes;
 
 mappingId	pointraw
 target		:{id} a :TestObject ; geo:asWKT {pointshape}^^xsd:wktLiteral .
-source		SELECT id, ST_Point(cast(pointraw._c0 as Decimal(24,20)), cast(pointraw._c1 as Decimal(24,20))) AS pointshape FROM pointraw;
+source		SELECT id, ST_Point(cast(pointraw._c0 as Decimal(24,20)), cast(pointraw._c1 as Decimal(24,20))) AS pointshape FROM testdb.pointraw;
 ]]
 
