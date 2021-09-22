@@ -18,7 +18,7 @@ target		:{id} a :TestObject ; :hasBoolean {testBoolean} ; :hasByte {testByte} ; 
 source		SELECT * FROM views.datatypes;
 
 mappingId	pointraw
-target		:{id} a :TestObject ; geo:asWKT {pointshape}^^xsd:wktLiteral .
+target		:{id} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral .
 source		SELECT id, ST_Point(cast(pointraw._c0 as Decimal(24,20)), cast(pointraw._c1 as Decimal(24,20))) AS pointshape FROM testdb.pointraw;
 ]]
 
