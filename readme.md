@@ -27,11 +27,19 @@ W3C reccomended mappings : <https://www.w3.org/2001/sw/rdb2rdf/wiki/Mapping_SQL_
 
 ## Running the test
 
-1. Build and run Apache Spark, run OntopSpark
+1. Build and run Apache Spark
+
   ```console
-  foo@bar:~$ sudo docker-compose up
+  foo@bar:~$ sudo ./docker-build.sh
+  foo@bar:~$ sudo docker-compose -f docker-compose-spark.yml up
   ```
-  
+
+2. Wait Apache Spark complete startup, then run OntopSpark in another console window
+
+  ```console
+  foo@bar:~$ sudo docker-compose -f docker-compose-ontop.yml up
+  ```
+
 2. Connect to [_localhost:8080_](http://localhost:8080/)
 
 3. Execute the query, and check the datatypes
