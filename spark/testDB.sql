@@ -36,3 +36,6 @@ INSERT INTO testDB.pointraw VALUES(2, 2.1, 102.1);
 -- CREATE OR REPLACE TEMP VIEW pointdata AS
 -- SELECT testDB.pointraw.id, ST_Point(cast(testDB.pointraw._c0 as Decimal(24,20)), cast(testDB.pointraw._c1 as Decimal(24,20))) AS pointshape
 -- FROM testDB.pointraw;
+
+CREATE TABLE testDB.catalog (`B01` string);
+INSERT INTO testDB.catalog VALUES(2000_01_precip.tif);
