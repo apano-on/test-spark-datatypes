@@ -19,11 +19,17 @@ start-worker.sh \
 #	--conf spark.kryo.registrator=org.apache.sedona.viz.core.Serde.SedonaVizKryoRegistrator \
 #	--conf spark.sql.extensions=org.apache.sedona.viz.sql.SedonaVizExtensions,org.apache.sedona.sql.SedonaSqlExtensions
 
-spark-sql \
-	--name SPARKSQL-INSERTIONS \
-	--master spark://localhost:7077 \
-	--deploy-mode client  \
-	-f ./testDB.sql
+#spark-sql \
+#	--name SPARKSQL-INSERTIONS \
+#	--master spark://localhost:7077 \
+#	--deploy-mode client  \
+#	-f ./testDB.sql
+
+spark-submit \
+  --name SPARKSQL-INSERTIONS \
+  --master spark://localhost:7077 \
+  --deploy-mode client  \
+  SedonaSQLTemplate-assembly-0.1.0.jar
 
 start-thriftserver.sh \
 	--name THRIFTSERVER \

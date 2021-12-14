@@ -139,6 +139,12 @@ xsd:date rdf:type rdfs:Datatype .
             rdfs:range xsd:byte .
 
 
+###  http://www.semanticweb.org/spark-datatypes-test#hasRSMean
+:hasRSMean rdf:type owl:DatatypeProperty ;
+           rdfs:domain :TestObject ;
+           rdfs:range xsd:double .
+
+
 #################################################################
 #    Classes
 #################################################################

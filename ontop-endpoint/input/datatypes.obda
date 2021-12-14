@@ -17,8 +17,8 @@ mappingId	test
 target		:{id} a :TestObject ; :hasBoolean {testBoolean} ; :hasByte {testByte} ; :hasTinyInt {testTinyInt} ; :hasShort {testShort} ; :hasSmallInt {testSmallInt} ; :hasInt {testInt} ; :hasInteger {testInteger} ; :hasLong {testLong} ; :hasBigInt {testBigInt} ; :hasFloat {testFloat} ; :hasReal {testReal} ; :hasDouble {testDouble} ; :hasDate {testDate} ; :hasTimestamp {testTimestamp} ; :hasString {testString} ; :hasBinary {testBinary} ; :hasDecimal {testDecimal} ; :hasDec {testDec} ; :hasNumeric {testNumeric} .
 source		SELECT * FROM views.datatypes;
 
-mappingId	pointraw
-target		:{id} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral .
-source		SELECT id, ST_GEOMFROMWKT(CONCAT('POINT(',_c0,' ',_c1,')') ) AS pointshape FROM testdb.pointraw;
+mappingId	raster_1
+target		:{origin} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral ; :hasRSMean {rsmean}^^xsd:double .
+source		SELECT origin, ST_GEOMFROMWKT(geom) AS pointshape, RS_MEAN(data) AS rsmean FROM default.my_geotiff_table;
 ]]
 
