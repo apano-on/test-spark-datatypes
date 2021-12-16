@@ -24,11 +24,8 @@ COPY 2000_01_precip.tif 2000_01_precip.tif
 
 RUN chmod +x start.sh
 
-#NOTE: In the future the jars can be retrieved from maven / they can either be downloaded manually or pulled from maven at build time
-RUN cd ${SPARK_HOME}/jars && \
-wget "https://mvnrepository.com/artifact/org.locationtech.rasterframes/rasterframes_2.12/0.10.0" && \
-wget "https://mvnrepository.com/artifact/org.locationtech.rasterframes/pyrasterframes_2.12/0.10.0" && \
-wget "https://mvnrepository.com/artifact/org.locationtech.rasterframes/rasterframes-datasource_2.12/0.10.0"
+COPY pyrasterframes-assembly-0.10.1-SNAPSHOT.jar ${SPARK_HOME}/jars/pyrasterframes-assembly-0.10.1-SNAPSHOT.jar
+COPY shapeless_2.12-2.3.7.jar ${SPARK_HOME}/jars/shapeless_2.12-2.3.7.jar
 
 COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 

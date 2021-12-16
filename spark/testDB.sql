@@ -33,9 +33,28 @@ CREATE TABLE testDB.pointraw (id int, _c0 string, _c1 string);
 INSERT INTO testDB.pointraw VALUES(1, 1.1, 101.1);
 INSERT INTO testDB.pointraw VALUES(2, 2.1, 102.1);
 
--- CREATE OR REPLACE TEMP VIEW pointdata AS
--- SELECT testDB.pointraw.id, ST_Point(cast(testDB.pointraw._c0 as Decimal(24,20)), cast(testDB.pointraw._c1 as Decimal(24,20))) AS pointshape
--- FROM testDB.pointraw;
+CREATE TABLE testDB.catalog (id INT, var1 STRING);
+INSERT INTO testDB.catalog VALUES(1, '/home/2000_01_precip.tif');
 
-CREATE TABLE testDB.catalog (`B01` string);
-INSERT INTO testDB.catalog VALUES(2000_01_precip.tif);
+CREATE OR REPLACE TEMPORARY VIEW rasterview
+                        USING raster
+                        OPTIONS (
+                                catalog_table='testDB.catalog',
+                                catalog_col_names='var1',
+				tile_dimensions='256,256');
+
+SHOW TABLES;
+SHOW COLUMNS IN rasterview;
+DESCRIBE TABLE rasterview;
+
+CREATE TABLE testDB.rasterview2
+AS SELECT * FROM rasterview;
+
+-- Also fails
+--CREATE TABLE testDB.rasterview2 (
+--                                    var1_path STRING,
+--                                    var1 struct<tile: string, extent: struct<xmin: double, ymin: double, xmax: double, ymax: double>, crs: string>,
+--                                    id INT);
+
+--INSERT INTO TABLE testDB.rasterview2
+--SELECT * FROM rasterview;
