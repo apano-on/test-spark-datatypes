@@ -14,7 +14,7 @@ terms:		http://purl.org/dc/terms/
 
 [MappingDeclaration] @collection [[
 mappingId       raster_1
-target          :{origin} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral ; :hasRSMean {rsmean}^^xsd:double ; :hasRSMode {rsmode}^^xsd:double ; :hasRSMax {rsmax}^^xsd:double ; :hasRSMin {rsmin>
+target          :{origin} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral ; :hasRSMean {rsmean}^^xsd:double ; :hasRSMode {rsmode}^^xsd:double ; :hasRSMax {rsmax}^^xsd:double ; :hasRSMin {rsmin}^^xsd:double .
 source          SELECT origin,
                         ST_GEOMFROMWKT(geom) AS pointshape,
                         RS_MEAN(data) AS rsmean,

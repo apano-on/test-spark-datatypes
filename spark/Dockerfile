@@ -21,6 +21,7 @@ WORKDIR /home
 COPY start.sh start.sh
 COPY testDB.sql testDB.sql
 COPY SedonaSQLTemplate-assembly-0.1.0.jar SedonaSQLTemplate-assembly-0.1.0.jar
+COPY rain_raster_ds rain_raster_ds
 
 RUN chmod +x start.sh
 

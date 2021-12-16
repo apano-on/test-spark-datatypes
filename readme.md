@@ -13,6 +13,9 @@ The data pipeline needs to use a [Sedona jar](/spark/SedonaSQLTemplate-assembly-
 
 1. Build and run Apache Spark, run OntopSpark
   ```console
+  foo@bar:~$ sudo git clone https://github.com/apano-on/test-spark-datatypes.git sedona-raster-test
+  foo@bar:~$ sudo cd sedona-raster-test
+  foo@bar:~$ sudo git checkout test/sedona-raster
   foo@bar:~$ sudo docker-compose up
   ```
 
