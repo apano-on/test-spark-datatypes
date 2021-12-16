@@ -13,12 +13,14 @@ skos:		http://www.w3.org/2004/02/skos/core#
 terms:		http://purl.org/dc/terms/
 
 [MappingDeclaration] @collection [[
-mappingId	test
-target		:{id} a :TestObject ; :hasBoolean {testBoolean} ; :hasByte {testByte} ; :hasTinyInt {testTinyInt} ; :hasShort {testShort} ; :hasSmallInt {testSmallInt} ; :hasInt {testInt} ; :hasInteger {testInteger} ; :hasLong {testLong} ; :hasBigInt {testBigInt} ; :hasFloat {testFloat} ; :hasReal {testReal} ; :hasDouble {testDouble} ; :hasDate {testDate} ; :hasTimestamp {testTimestamp} ; :hasString {testString} ; :hasBinary {testBinary} ; :hasDecimal {testDecimal} ; :hasDec {testDec} ; :hasNumeric {testNumeric} .
-source		SELECT * FROM views.datatypes;
-
-mappingId	raster_1
-target		:{origin} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral ; :hasRSMean {rsmean}^^xsd:double .
-source		SELECT origin, ST_GEOMFROMWKT(geom) AS pointshape, RS_MEAN(data) AS rsmean FROM default.my_geotiff_table;
+mappingId       raster_1
+target          :{origin} a :TestObject ; geo:asWKT {pointshape}^^geo:wktLiteral ; :hasRSMean {rsmean}^^xsd:double ; :hasRSMode {rsmode}^^xsd:double ; :hasRSMax {rsmax}^^xsd:double ; :hasRSMin {rsmin>
+source          SELECT origin,
+                        ST_GEOMFROMWKT(geom) AS pointshape,
+                        RS_MEAN(data) AS rsmean,
+                        RS_MODE(data) AS rsmode,
+                        ARRAY_MAX(ARRAY_EXCEPT(data,ARRAY(FLOAT('NaN')))) AS rsmax,
+                        ARRAY_MIN(data) AS rsmin
+                FROM default.my_geotiff_table;
 ]]
 
