@@ -1,4 +1,4 @@
-## SparkSQL --> Simple example with raster data
+## SparkSQL --> Simple example with raster data with SPARK VERSION 3.1.2
 
 Rasterframes in SQL: https://rasterframes.io/languages.html#sql
 
