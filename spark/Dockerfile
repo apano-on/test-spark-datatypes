@@ -1,14 +1,21 @@
 FROM debian
 
 RUN apt update
-RUN apt install wget default-jdk git python3 gdal-bin -y
+RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >> /etc/apt/sources.list
+RUN mkdir -p /usr/share/man/man1 && \
+    apt-get update -y && \
+    apt-get install -y openjdk-8-jdk
+
+RUN apt-get install unzip -y && \
+    apt-get autoremove -y
+RUN apt install wget openjdk-8-jdk git python3 gdal-bin -y
 RUN apt-get install -y curl
 
 WORKDIR /tmp
 
-RUN wget http://downloads.apache.org/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz
+RUN wget https://archive.apache.org/dist/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
 RUN tar xvf spark-*
-RUN mv spark-3.1.2-bin-hadoop3.2 /opt/spark
+RUN mv spark-2.4.7-bin-hadoop2.7 /opt/spark
 
 RUN apt install procps -y
 
@@ -24,8 +31,21 @@ COPY 2000_01_precip.tif 2000_01_precip.tif
 
 RUN chmod +x start.sh
 
-COPY pyrasterframes-assembly-0.10.1-SNAPSHOT.jar ${SPARK_HOME}/jars/pyrasterframes-assembly-0.10.1-SNAPSHOT.jar
-COPY shapeless_2.12-2.3.7.jar ${SPARK_HOME}/jars/shapeless_2.12-2.3.7.jar
+COPY pyrasterframes-assembly-0.9.1.jar ${SPARK_HOME}/jars/pyrasterframes-assembly-0.9.1.jar
+COPY pyrasterframes-assembly-0.9.1.jar pyrasterframes-assembly-0.9.1.jar
+COPY config-1.4.1.jar ${SPARK_HOME}/jars/config-1.4.1.jar
+COPY config-1.4.1.jar config-1.4.1.jar
+
+RUN cd ${SPARK_HOME}/jars && \
+wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/rasterframes_2.11/0.9.1/rasterframes_2.11-0.9.1.jar" && \
+wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/pyrasterframes_2.11/0.9.1/pyrasterframes_2.11-0.9.1.jar" && \
+wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/rasterframes-datasource_2.11/0.9.1/rasterframes-datasource_2.11-0.9.1.jar"
+
+RUN wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/pyrasterframes_2.11/0.9.1/pyrasterframes_2.11-0.9.1.jar"
+
+RUN wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/rasterframes_2.11/0.9.1/rasterframes_2.11-0.9.1.jar" && \
+wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/pyrasterframes_2.11/0.9.1/pyrasterframes_2.11-0.9.1.jar" && \
+wget "https://repo1.maven.org/maven2/org/locationtech/rasterframes/rasterframes-datasource_2.11/0.9.1/rasterframes-datasource_2.11-0.9.1.jar"
 
 COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
 

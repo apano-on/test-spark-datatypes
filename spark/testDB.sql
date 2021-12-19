@@ -50,11 +50,4 @@ DESCRIBE TABLE rasterview;
 CREATE TABLE testDB.rasterview2
 AS SELECT * FROM rasterview;
 
--- Also fails
---CREATE TABLE testDB.rasterview2 (
---                                    var1_path STRING,
---                                    var1 struct<tile: string, extent: struct<xmin: double, ymin: double, xmax: double, ymax: double>, crs: string>,
---                                    id INT);
-
---INSERT INTO TABLE testDB.rasterview2
---SELECT * FROM rasterview;
+DESCRIBE TABLE testDB.rasterview2;
