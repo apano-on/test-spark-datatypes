@@ -7,7 +7,7 @@ SparkSQL built-in functions reference: https://spark.apache.org/docs/latest/api/
 
 Sample data are [rain raster data](/spark/rain_raster_ds) in North Carolina over a five year period.
 
-The data pipeline needs to use a [Sedona jar](/spark/SedonaSQLTemplate-assembly-0.1.0.jar) which can be built via [Scala](https://github.com/apache/incubator-sedona/tree/master/examples). A [sample file]() is provided which should replace the one in the Apache Sedona [example](https://github.com/apache/incubator-sedona/blob/master/examples/sql/src/main/scala/ScalaExample.scala).
+The data pipeline needs to use a [Sedona jar](/spark/SedonaSQLTemplate-assembly-0.1.0.jar) which can be built via [Scala](https://github.com/apache/incubator-sedona/tree/master/examples). A [sample file](https://github.com/apano-on/test-spark-datatypes/blob/test/sedona-raster/sedona/ScalaExample.scala) is provided which should replace the one in the Apache Sedona [example](https://github.com/apache/incubator-sedona/blob/master/examples/sql/src/main/scala/ScalaExample.scala).
 
 ## Running the test
 
